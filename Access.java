@@ -11,6 +11,9 @@ public class Access {
 
       String str;
       while((str = br.readLine()) != null){
+        String[]target = new String[5];
+        target[0] = str.substring(53,72);
+        System.out.println(target[0]);
         System.out.println(str);
       }
       br.close();
