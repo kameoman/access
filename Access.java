@@ -34,25 +34,24 @@ public class Access {
               for (int i=0; i<line_count; i++){
                 String[] result = line_by_line_data[i].split(regex,0);
                 Collections.addAll(list1, result);
-                // for(int i=0; i < 5; i++){
-                  // System.out.println(result[3]+"/"+result[4]);
                   access_path[i] = result[3]+"/"+result[4] ;
-              //  }
-
-                // access_path[line_count] = result[3]+"/"+result[4];
               }
-              // System.out.println(Arrays.toString(access_path));
+              String[] access_count_list = new String[line_count];
               // 要素ごとに個数を出力
-              for (var x: access_path){
+              for (int i = 0; i < line_count; i++){
                 int count = 0;
+                String x = (access_path[i]);
                 for (var y: access_path){
                     if (y.equals(x)){
                         count++;
                     }
                 }
-                System.out.println(x + "=>" + count);
-            }
-      br.close();
+                access_count_list[i] = x + "=>" + count;
+                // String data = x + "=>" + count;
+              }
+              System.out.println(access_count_list[0]);
+              System.out.println(Arrays.toString(access_count_list));
+              br.close();
     }
     catch(IOException e){
       System.out.println("入出力エラーです。");

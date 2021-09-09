@@ -3,7 +3,3 @@
 168.213.92.136 - - [25/Aug/2021:12:12:41 +0900] "GET /item/finance/3643 HTTP/1.1" 200 139 "/category/computers" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)"
 88.21.225.112 - - [25/Aug/2021:12:12:41 +0900] "GET /item/garden/4023 HTTP/1.1" 200 110 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)"
 88.21.225.112 - - [25/Aug/2021:12:12:41 +0900] "GET /item/garden/4023 HTTP/1.1" 200 110 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)"
-88.21.225.112 - - [25/Aug/2021:12:12:41 +0900] "GET /item/garden/4023 HTTP/1.1" 200 110 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)"
-68.156.115.150 - - [25/Aug/2021:12:12:41 +0900] "GET /category/books HTTP/1.1" 200 107 "-" "Mozilla/5.0 (Windows NT 6.0; rv:10.0.1) Gecko/20100101 Firefox/10.0.1"
-68.156.115.150 - - [25/Aug/2021:12:12:41 +0900] "GET /category/books HTTP/1.1" 200 107 "-" "Mozilla/5.0 (Windows NT 6.0; rv:10.0.1) Gecko/20100101 Firefox/10.0.1"
-68.156.115.150 - - [25/Aug/2021:12:12:41 +0900] "GET /category/books HTTP/1.1" 200 107 "-" "Mozilla/5.0 (Windows NT 6.0; rv:10.0.1) Gecko/20100101 Firefox/10.0.1"
