@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 // import java.io.FileInputStream;
 // import java.io.InputStreamReader;
 
@@ -28,7 +30,6 @@ public class Access {
               // // 文字列の分割（各行ごとに分割）
               String regex = "/";
               int line_count = line_by_line_data.length;
-              System.out.println(line_count);
               String[] access_path = new String[line_count];
               // 各行ごとに必要な項目を取り出してくる
               for (int i=0; i<line_count; i++){
@@ -47,10 +48,14 @@ public class Access {
                     }
                 }
                 access_count_list[i] = x + "=>" + count;
-                // String data = x + "=>" + count;
               }
-              System.out.println(access_count_list[0]);
-              System.out.println(Arrays.toString(access_count_list));
+              // 配列から重複を削除する
+              Set<String> linkedHashSet = new LinkedHashSet<String>();
+              for (int i = 0; i < access_count_list.length; i++) {
+                linkedHashSet.add(access_count_list[i]);
+              }
+              Object[] access_count_total = linkedHashSet.toArray();
+              System.out.println(Arrays.toString(access_count_total));
               br.close();
     }
     catch(IOException e){
