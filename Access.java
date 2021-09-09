@@ -14,6 +14,7 @@ public class Access {
       System.out.println("ファイル名を指定してください");
       System.exit(1);
     }
+    // ファイルを1行ずつ配列に入れる
     String[] tempInside = null;
     try{
       BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
@@ -22,18 +23,18 @@ public class Access {
       while((line = br.readLine()) != null){
         lineList.add(line);
 
-        // リスト作成
-        List<String> list1 = new ArrayList<>();
-        // 文字列の分割
-        String regex = "/";
-        String strtry = line;
+        // // リスト作成
+        // List<String> list1 = new ArrayList<>();
+        // // 文字列の分割
+        // String regex = "/";
+        // String strtry = tempInside[1];
 
-        String[] result = line.split(regex,0);
-        Collections.addAll(list1, result);
-        for (String a : list1){
-          System.out.println("["+a+"]");
-          System.out.println("-- --");
-        }
+        // String[] result = strtry.split(regex,0);
+        // Collections.addAll(list1, result);
+        // for (String a : list1){
+        //   System.out.println("["+a+"]");
+        //   System.out.println("-- --");
+        // }
 
         // for (int i= 0; i < result.length; i++){
         //   // System.out.println("["+result[i]+"]");
@@ -42,10 +43,10 @@ public class Access {
         // }
 
         // System.out.println(result.length);
-        String url_path = result[3]+"/"+result[4];
-        String[] ab = new String[] {url_path};
-        System.out.println(Arrays.toString(ab));
-        System.out.println("-- --");
+        // String url_path = result[3]+"/"+result[4];
+        // String[] ab = new String[] {url_path};
+        // System.out.println(Arrays.toString(ab));
+        // System.out.println("-- --");
 
         // result = line.split(regex, -1);
         // for (int i = 0 ; i < result.length; i++){
@@ -68,15 +69,18 @@ public class Access {
         // System.out.println(line);
       }
       tempInside = lineList.toArray(new String[lineList.size()]);
-      System.out.println(tempInside[0]);
-      System.out.println("--next--");
-      System.out.println(tempInside[1]);
-      System.out.println("--next--");
-      System.out.println(tempInside[2]);
-      System.out.println("--next--");
-      System.out.println(tempInside[3]);
-      System.out.println("--next--");
-      System.out.println(tempInside[4]);
+            List<String> list1 = new ArrayList<>();
+              // // 文字列の分割（各行ごとに分割）
+              String regex = "/";
+              String strtry = tempInside[1];
+      
+              String[] result = strtry.split(regex,0);
+              Collections.addAll(list1, result);
+              for (String a : list1){
+                System.out.println("["+a+"]");
+                System.out.println("-- --");
+              }
+      System.out.println(result[3]+"/"+result[4]);
       br.close();
     }
     catch(IOException e){
