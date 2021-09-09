@@ -58,30 +58,20 @@ public class Access {
                 linkedHashSet.add(access_count_list[i]);
               }
               Object[] access_count_total = linkedHashSet.toArray();
-              String[] stringArray = Arrays.copyOf(access_count_total, access_count_total.length, String[].class);
-              // System.out.println(Arrays.toString(access_count_total));
-              // System.out.println(access_count_total[1]);
+              // 降順にソートします
               Arrays.sort(access_count_total);
-              // System.out.println(Arrays.toString(access_count_total));
-              // List<String> kamedata = new ArrayList<>();
-              // String[] kamefinal = new String[line_count];
-              // for (int i=0; i<line_count; i++){
-              //   String[] final_data = stringArray[i].split(":");
-              //   Collections.addAll(kamedata, final_data);
-              //     kamefinal[i] = final_data[0]+"/"+final_data[1] ;
-              //     System.out.println(final_data[0]+":"+final_data[1]) ;
-              // }
-              // System.out.println();
-              br.close();
               for (int f = 0, l = access_count_total.length - 1; f < l; f++, l--){
                 Object temp = access_count_total[f];
                 access_count_total[f]  = access_count_total[l];
                 access_count_total[l] = temp;
               }
-              // System.out.println(Arrays.toString(access_count_total));
-              for (int i = 0; i <=access_count_total.length-1; i++){
+              // 必要数表示する(上位20位)
+              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              System.out.println("回数:URL（パス）");
+              for (int i = 0; i <=20-1; i++){
                 System.out.println(access_count_total[i]);
               }
+              br.close();
     }
     catch(IOException e){
       System.out.println("入出力エラーです。");
