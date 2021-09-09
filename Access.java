@@ -27,11 +27,13 @@ public class Access {
             List<String> list1 = new ArrayList<>();
               // // 文字列の分割（各行ごとに分割）
               String regex = "/";
+              int line_count = line_by_line_data.length;
+              System.out.println(line_count);
                     // 各行ごとに必要な項目を取り出してくる
               for (String str: line_by_line_data){
                 String[] result = str.split(regex,0);
                 Collections.addAll(list1, result);
-                for (String a : list1){
+                for (int i=line_count; i <=line_count; i++){
                   // System.out.println("["+a+"]");
                   System.out.println(result[3]+"/"+result[4]);
                 }
