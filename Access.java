@@ -59,7 +59,7 @@ public class Access {
               }
               Object[] access_count_total = linkedHashSet.toArray();
               String[] stringArray = Arrays.copyOf(access_count_total, access_count_total.length, String[].class);
-              System.out.println(Arrays.toString(access_count_total));
+              // System.out.println(Arrays.toString(access_count_total));
               // System.out.println(access_count_total[1]);
               Arrays.sort(access_count_total);
               // System.out.println(Arrays.toString(access_count_total));
@@ -78,7 +78,10 @@ public class Access {
                 access_count_total[f]  = access_count_total[l];
                 access_count_total[l] = temp;
               }
-              System.out.println(Arrays.toString(access_count_total));
+              // System.out.println(Arrays.toString(access_count_total));
+              for (int i = 0; i <=access_count_total.length-1; i++){
+                System.out.println(access_count_total[i]);
+              }
     }
     catch(IOException e){
       System.out.println("入出力エラーです。");
