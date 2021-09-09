@@ -29,26 +29,30 @@ public class Access {
               String regex = "/";
               int line_count = line_by_line_data.length;
               System.out.println(line_count);
-                    // 各行ごとに必要な項目を取り出してくる
-              for (String str: line_by_line_data){
-                String[] result = str.split(regex,0);
+              String[] access_path = new String[line_count];
+              // 各行ごとに必要な項目を取り出してくる
+              for (int i=0; i<line_count; i++){
+                String[] result = line_by_line_data[i].split(regex,0);
                 Collections.addAll(list1, result);
-                for (int i=line_count; i <=line_count; i++){
-                  // System.out.println("["+a+"]");
-                  System.out.println(result[3]+"/"+result[4]);
-                }
-                System.out.println("-- --");
-                
+                // for(int i=0; i < 5; i++){
+                  // System.out.println(result[3]+"/"+result[4]);
+                  access_path[i] = result[3]+"/"+result[4] ;
+              //  }
+
+                // access_path[line_count] = result[3]+"/"+result[4];
               }
-      
+              System.out.println(access_path[0]);
+              System.out.println(access_path[1]);
+              System.out.println(access_path[2]);
+              System.out.println(access_path[3]);
+              System.out.println(Arrays.toString(access_path));
       // 配列の追加
       // String stringArray=result[3]+"/"+result[4];
-      String[] access_path = new String[5];
+      // String[] access_path = new String[5];
       // access_path[0] = result[3]+"/"+result[4];
-      access_path[1] = "add";
-      System.out.println(Arrays.toString(access_path));
-      System.out.println(access_path[0]);
-      System.out.println(access_path[1]);
+      // access_path[1] = "add";
+      // System.out.println(Arrays.toString(access_path));
+
       br.close();
     }
     catch(IOException e){
