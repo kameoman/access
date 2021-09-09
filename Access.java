@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
+// import java.io.FileInputStream;
+// import java.io.InputStreamReader;
 
 import javax.naming.StringRefAddr;
 
@@ -12,20 +14,21 @@ public class Access {
       System.out.println("ファイル名を指定してください");
       System.exit(1);
     }
+    String[] tempInside = null;
     try{
-      BufferedReader br = new BufferedReader(new FileReader(args[0]));
+      BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
+      List<String> lineList = new ArrayList<String>();
+      String line;
+      while((line = br.readLine()) != null){
+        lineList.add(line);
 
-      String str = null;
-      while((str = br.readLine()) != null){
-        // 文字列を1行ずつに変換する
-        // System.out.println(">>> " + str);
         // リスト作成
         List<String> list1 = new ArrayList<>();
         // 文字列の分割
         String regex = "/";
-        String strtry = str;
+        String strtry = line;
 
-        String[] result = str.split(regex,0);
+        String[] result = line.split(regex,0);
         Collections.addAll(list1, result);
         for (String a : list1){
           System.out.println("["+a+"]");
@@ -44,14 +47,14 @@ public class Access {
         System.out.println(Arrays.toString(ab));
         System.out.println("-- --");
 
-        // result = str.split(regex, -1);
+        // result = line.split(regex, -1);
         // for (int i = 0 ; i < result.length; i++){
         //   System.out.println("[" + result[i] + "]");
         // }
 
         // System.out.println("-- --");
 
-        // result = str.split(regex, 2);
+        // result = line.split(regex, 2);
         // for (int i = 0 ; i < result.length; i++){
         //   System.out.println("[" + result[i] + "]");
         // }
@@ -59,11 +62,21 @@ public class Access {
 
 
         // String[]target = new String[5];
-        // target[0] = str.substring(53,72);
+        // target[0] = line.substring(53,72);
         // System.out.println(target[0]);
         // // System.out.println(target[1]);
-        // System.out.println(str);
+        // System.out.println(line);
       }
+      tempInside = lineList.toArray(new String[lineList.size()]);
+      System.out.println(tempInside[0]);
+      System.out.println("--next--");
+      System.out.println(tempInside[1]);
+      System.out.println("--next--");
+      System.out.println(tempInside[2]);
+      System.out.println("--next--");
+      System.out.println(tempInside[3]);
+      System.out.println("--next--");
+      System.out.println(tempInside[4]);
       br.close();
     }
     catch(IOException e){
