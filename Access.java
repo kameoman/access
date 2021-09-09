@@ -41,18 +41,17 @@ public class Access {
 
                 // access_path[line_count] = result[3]+"/"+result[4];
               }
-              System.out.println(access_path[0]);
-              System.out.println(access_path[1]);
-              System.out.println(access_path[2]);
-              System.out.println(access_path[3]);
-              System.out.println(Arrays.toString(access_path));
-      // 配列の追加
-      // String stringArray=result[3]+"/"+result[4];
-      // String[] access_path = new String[5];
-      // access_path[0] = result[3]+"/"+result[4];
-      // access_path[1] = "add";
-      // System.out.println(Arrays.toString(access_path));
-
+              // System.out.println(Arrays.toString(access_path));
+              // 要素ごとに個数を出力
+              for (var x: access_path){
+                int count = 0;
+                for (var y: access_path){
+                    if (y.equals(x)){
+                        count++;
+                    }
+                }
+                System.out.println(x + "=>" + count);
+            }
       br.close();
     }
     catch(IOException e){
