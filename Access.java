@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 // import java.io.FileInputStream;
 // import java.io.InputStreamReader;
 
@@ -47,7 +50,7 @@ public class Access {
                         count++;
                     }
                 }
-                access_count_list[i] = x + "=>" + count;
+                access_count_list[i] = count +":"+ x;
               }
               // 配列から重複を削除する
               Set<String> linkedHashSet = new LinkedHashSet<String>();
@@ -55,8 +58,27 @@ public class Access {
                 linkedHashSet.add(access_count_list[i]);
               }
               Object[] access_count_total = linkedHashSet.toArray();
+              String[] stringArray = Arrays.copyOf(access_count_total, access_count_total.length, String[].class);
               System.out.println(Arrays.toString(access_count_total));
+              // System.out.println(access_count_total[1]);
+              Arrays.sort(access_count_total);
+              // System.out.println(Arrays.toString(access_count_total));
+              // List<String> kamedata = new ArrayList<>();
+              // String[] kamefinal = new String[line_count];
+              // for (int i=0; i<line_count; i++){
+              //   String[] final_data = stringArray[i].split(":");
+              //   Collections.addAll(kamedata, final_data);
+              //     kamefinal[i] = final_data[0]+"/"+final_data[1] ;
+              //     System.out.println(final_data[0]+":"+final_data[1]) ;
+              // }
+              // System.out.println();
               br.close();
+              for (int f = 0, l = access_count_total.length - 1; f < l; f++, l--){
+                Object temp = access_count_total[f];
+                access_count_total[f]  = access_count_total[l];
+                access_count_total[l] = temp;
+              }
+              System.out.println(Arrays.toString(access_count_total));
     }
     catch(IOException e){
       System.out.println("入出力エラーです。");
