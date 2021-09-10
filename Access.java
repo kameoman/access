@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Comparator;
@@ -62,9 +61,10 @@ public class Access {
               Object[] strings_after = linkedHashSet.toArray();
               // 必要数表示する(上位20位)
               System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              System.out.println("回数:URL（パス）");
+              System.out.println("順位:回数:URL（パス）");
               if (strings_after.length < 20){
                 for (int i = 0; i < strings_after.length; i++) {
+                  System.out.print(i+1+"位:");
                   System.out.println(strings_after[i]);
                 }
                 for (int i = 0; i < 20-strings_after.length; i++) {
@@ -72,6 +72,7 @@ public class Access {
                 }
               }else{
                 for (int i = 0; i < 20; i++) {
+                  System.out.print(i+1+"位:");
                   System.out.println(strings_after[i]);
                 }
               }
