@@ -5,13 +5,6 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-// import java.io.FileInputStream;
-// import java.io.InputStreamReader;
-
-import javax.naming.StringRefAddr;
 
 public class Access {
     public static void main(String[] args){
@@ -26,7 +19,7 @@ public class Access {
       List<String> lineList = new ArrayList<String>();
       String line;
       while((line = br.readLine()) != null){
-        lineList.add(line);
+        lineList.add(line.substring(45,90));
       }
       line_by_line_data = lineList.toArray(new String[lineList.size()]);
             List<String> list1 = new ArrayList<>();
@@ -38,7 +31,7 @@ public class Access {
               for (int i=0; i<line_count; i++){
                 String[] result = line_by_line_data[i].split(regex,0);
                 Collections.addAll(list1, result);
-                  access_path[i] = result[3]+"/"+result[4] ;
+                  access_path[i] = result[1]+"/"+result[2] ;
               }
               String[] access_count_list = new String[line_count];
               // 要素ごとに個数を出力
