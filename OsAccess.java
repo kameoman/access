@@ -33,7 +33,7 @@ public class OsAccess {
                 access_path[i] = line_by_line_data[i].substring(beginIndex-1, endIndex);
                 }
               Integer[] access_count_list = new Integer[line_count];
-              // 要素ごとに個数を出力
+              // 要素ごとに個数計測
               for (int i = 0; i < line_count; i++){
                 int windows_count = 0;
                 for (var y: access_path){
@@ -61,6 +61,7 @@ public class OsAccess {
                   }
                   access_count_list[2] = google_count;
               }
+              // Windows、MacOS、Googlebot以外の割合
               for (int i = 0; i < line_count; i++){
                 int os_other = 0;
                 for (var y: access_path){
