@@ -91,12 +91,12 @@ public class OsAccess {
               double total_windows = access_count_list[0];
               double total_other = access_count_list[3];
               double windows_rate = (total_windows / total_os) *100;
-              System.out.println("2.Googlebot を除くOS毎のアクセス割合");
-              System.out.println("Windowsの割合"+Math.round(windows_rate)+"%");
+              System.out.println("2.Googlebot を除くOS毎のアクセス割合(小数第二位で四捨五入しています。)");
+              System.out.println("Windowsの割合"+(double)Math.round(windows_rate* 10)/10+"%");
               double mac_rate = (total_mac / total_os) *100;
-              System.out.println("MacOSの割合"+Math.round(mac_rate)+"%");
+              System.out.println("MacOSの割合"+(double)Math.round(mac_rate* 10)/10+"%");
               double other_rate = (total_other / total_os) *100;
-              System.out.println("Windows、MacOS以外の割合"+Math.round(other_rate)+"%");
+              System.out.println("Windows、MacOS以外の割合"+(double)Math.round(other_rate* 10)/10+"%");
 
 
               br.close();
