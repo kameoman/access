@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-
+// 2.Googlebot を除くOS毎のアクセス割合
 public class OsAccess {
   public static void main(String[] args){
     if(args.length != 1){
@@ -22,6 +22,7 @@ public class OsAccess {
       while((line = br.readLine()) != null){
         lineList.add(line.substring(45,90));
       }
+      // System.out.print(line);
       line_by_line_data = lineList.toArray(new String[lineList.size()]);
             List<String> list1 = new ArrayList<>();
               // // 文字列の分割（各行ごとに分割）
@@ -60,11 +61,11 @@ public class OsAccess {
                 access_count_total[l] = temp;
               }
               // 必要数表示する(上位20位)
-              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              System.out.println("回数:URL（パス）");
-              for (int i = 0; i <=20-1; i++){
-                System.out.println(access_count_total[i]);
-              }
+              // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              // System.out.println("回数:URL（パス）");
+              // for (int i = 0; i <=20-1; i++){
+              //   System.out.println(access_count_total[i]);
+              // }
               br.close();
     }
     catch(IOException e){

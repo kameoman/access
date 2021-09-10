@@ -19,6 +19,7 @@ public class Access {
       List<String> lineList = new ArrayList<String>();
       String line;
       while((line = br.readLine()) != null){
+        // 保存量を減らす
         lineList.add(line.substring(45,90));
       }
       line_by_line_data = lineList.toArray(new String[lineList.size()]);
