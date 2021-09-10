@@ -70,34 +70,30 @@ public class Keyword {
               }
               search_word_total[i] = count + ":" + x ;
             }
-            
-            
-            // 配列から重複を削除する
-            ArrayList<String> linkedHashSet = new ArrayList<>();
-            for (int i = 0; i < search_word_total.length; i++) {
-              linkedHashSet.add(search_word_total[i]);
+            ArrayList<String> list_count = new ArrayList<>();
+            for (int i = 0; i < 20; i++) {
+              list_count.add(search_word_total[i]);
             }
-            // System.out.println(linkedHashSet);
+            // 降順にソートします
+            Collections.sort(list_count, Comparator.comparingLong(str -> -1 * Long.parseLong(str.split(":")[0])));
+            String[] array = list_count.toArray(new String[list_count.size()]);
+            // 配列から重複を削除する
+            Set<String> linkedHashSet = new LinkedHashSet<String>();
+            for (int i = 0; i < array.length; i++) {
+              linkedHashSet.add(array[i]);
+            }
             Object[] search_rank = linkedHashSet.toArray();
-            // Collections.sort(linkedHashSet,Comparator.comparingLong(str -> -1 * Long.parseLong(str.split(":")[0])));
-              // 降順にソートします
-              // Arrays.sort(search_rank);
-              for (int f = 0, l = search_rank.length - 1; f < l; f++, l--){
-                Object temp = search_rank[f];
-                search_rank[f]  = search_rank[l];
-                search_rank[l] = temp;
-              }
 
               // 必要数表示する(上位20位)
               // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
               // System.out.println("回数:URL（パス）");
-              for (int i = 0; i <=20-1; i++){
-                System.out.println(search_rank[i]);
-              }
+              // for (int i = 0; i <=20-1; i++){
+              //   System.out.println(search_rank[i]);
+              // }
               // System.out.println(search_rank[680]);
               // System.out.println(search_rank[679]);
               // System.out.println(search_rank[678]);
-              // System.out.println(Arrays.toString(search_rank));
+              System.out.println(Arrays.toString(search_rank));
 
               br.close();
     }
