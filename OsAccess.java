@@ -37,40 +37,69 @@ public class OsAccess {
                 int beginIndex = line_by_line_data[i].indexOf(beginStr);
                 String endStr = ")";
                 int endIndex = line_by_line_data[i].indexOf(endStr) + endStr.length();
-                access_path[i] = line_by_line_data[i].substring(beginIndex, endIndex);
+                access_path[i] = line_by_line_data[i].substring(beginIndex-1, endIndex);
                 }
-                System.out.println(Arrays.toString(access_path));
+                // System.out.println(Arrays.toString(access_path));
               String[] access_count_list = new String[line_count];
               // 要素ごとに個数を出力
               for (int i = 0; i < line_count; i++){
-                int count = 0;
-                String x = (access_path[i]);
+                int windows_count = 0;
                 for (var y: access_path){
-                    if (y.equals(x)){
-                        count++;
+                    if (y.contains("Windows")){
+                      windows_count++;
                     }
-                }
-                access_count_list[i] = count +":"+ x;
+                  }
+                  access_count_list[0] = windows_count +":"+ "Windows";
               }
+              for (int i = 0; i < line_count; i++){
+                int mac_count = 0;
+                for (var y: access_path){
+                    if (y.contains("Mac")){
+                      mac_count++;
+                    }
+                  }
+                  access_count_list[1] = mac_count +":"+ "Mac";
+              }
+              for (int i = 0; i < line_count; i++){
+                int mac_count = 0;
+                for (var y: access_path){
+                    if (y.contains("Mac")){
+                      mac_count++;
+                    }
+                  }
+                  access_count_list[1] = mac_count +":"+ "Mac";
+              }
+              for (int i = 0; i < line_count; i++){
+                int google_count = 0;
+                for (var y: access_path){
+                    if (y.contains("Googlebot")){
+                      google_count++;
+                    }
+                  }
+                  access_count_list[2] = google_count +":"+ "Googlebot";
+              }
+              System.out.println(access_count_list[0]);
+              System.out.println(access_count_list[1]);
+              System.out.println(access_count_list[2]);
               // 配列から重複を削除する
-              Set<String> linkedHashSet = new LinkedHashSet<String>();
-              for (int i = 0; i < access_count_list.length; i++) {
-                linkedHashSet.add(access_count_list[i]);
-              }
-              Object[] access_count_total = linkedHashSet.toArray();
-              // 降順にソートします
-              Arrays.sort(access_count_total);
-              for (int f = 0, l = access_count_total.length - 1; f < l; f++, l--){
-                Object temp = access_count_total[f];
-                access_count_total[f]  = access_count_total[l];
-                access_count_total[l] = temp;
-              }
+              // Set<String> linkedHashSet = new LinkedHashSet<String>();
+              // for (int i = 0; i < access_count_list.length; i++) {
+              //   linkedHashSet.add(access_count_list[i]);
+              // }
+              // Object[] access_count_total = linkedHashSet.toArray();
+              // // 降順にソートします
+              // Arrays.sort(access_count_total);
+              // for (int f = 0, l = access_count_total.length - 1; f < l; f++, l--){
+              //   Object temp = access_count_total[f];
+              //   access_count_total[f]  = access_count_total[l];
+              //   access_count_total[l] = temp;
+              // }
               // 必要数表示する(上位20位)
-              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              System.out.println("回数:URL（パス）");
-              for (int i = 0; i <=20-1; i++){
-                System.out.println(access_count_total[i]);
-              }
+              // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              // System.out.println("回数:URL（パス）");
+              // for (int i = 0; i <=20-1; i++){
+              //   System.out.println(access_count_total[i]);
+              // }
               br.close();
     }
     catch(IOException e){
