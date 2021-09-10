@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.print.attribute.standard.MediaSize.Other;
+
 // 2.Googlebot を除くOS毎のアクセス割合
 public class OsAccess {
   public static void main(String[] args){
@@ -69,14 +71,32 @@ public class OsAccess {
                   }
                   access_count_list[2] = google_count;
               }
+              for (int i = 0; i < line_count; i++){
+                int os_other = 0;
+                for (var y: access_path){
+                    if (!y.contains("Googlebot")){
+                      if (!y.contains("Windows")){
+                        if (!y.contains("Mac")){
+                          os_other++;
+                        }
+
+                      }
+
+                    }
+                  }
+                  access_count_list[3] = os_other;
+              }
               int total_os = access_count_list.length - access_count_list[2];
               double total_mac = access_count_list[1];
               double total_windows = access_count_list[0];
+              double total_other = access_count_list[3];
               double windows_rate = (total_windows / total_os) *100;
               System.out.println("2.Googlebot を除くOS毎のアクセス割合");
               System.out.println("Windowsの割合"+Math.round(windows_rate)+"%");
               double mac_rate = (total_mac / total_os) *100;
               System.out.println("MacOSの割合"+Math.round(mac_rate)+"%");
+              double other_rate = (total_other / total_os) *100;
+              System.out.println("Windows、MacOS以外の割合"+Math.round(other_rate)+"%");
 
 
               br.close();
