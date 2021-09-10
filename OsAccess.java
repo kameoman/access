@@ -20,21 +20,26 @@ public class OsAccess {
       List<String> lineList = new ArrayList<String>();
       String line;
       while((line = br.readLine()) != null){
-        lineList.add(line.substring(45,90));
+        lineList.add(line);
       }
-      // System.out.print(line);
       line_by_line_data = lineList.toArray(new String[lineList.size()]);
             List<String> list1 = new ArrayList<>();
               // // 文字列の分割（各行ごとに分割）
-              String regex = "/";
+              String regex = " ";
               int line_count = line_by_line_data.length;
               String[] access_path = new String[line_count];
+              // System.out.println(line_by_line_data.length);
+
               // 各行ごとに必要な項目を取り出してくる
               for (int i=0; i<line_count; i++){
-                String[] result = line_by_line_data[i].split(regex,0);
-                Collections.addAll(list1, result);
-                  access_path[i] = result[1]+"/"+result[2] ;
-              }
+                // 条件を付けて文字を抽出
+                String beginStr = "Mozilla";
+                int beginIndex = line_by_line_data[i].indexOf(beginStr);
+                String endStr = ")";
+                int endIndex = line_by_line_data[i].indexOf(endStr) + endStr.length();
+                access_path[i] = line_by_line_data[i].substring(beginIndex, endIndex);
+                }
+                System.out.println(Arrays.toString(access_path));
               String[] access_count_list = new String[line_count];
               // 要素ごとに個数を出力
               for (int i = 0; i < line_count; i++){
@@ -61,11 +66,11 @@ public class OsAccess {
                 access_count_total[l] = temp;
               }
               // 必要数表示する(上位20位)
-              // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              // System.out.println("回数:URL（パス）");
-              // for (int i = 0; i <=20-1; i++){
-              //   System.out.println(access_count_total[i]);
-              // }
+              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              System.out.println("回数:URL（パス）");
+              for (int i = 0; i <=20-1; i++){
+                System.out.println(access_count_total[i]);
+              }
               br.close();
     }
     catch(IOException e){
