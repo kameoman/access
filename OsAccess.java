@@ -1,12 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import javax.print.attribute.standard.MediaSize.Other;
 
 // 2.Googlebot を除くOS毎のアクセス割合
 public class OsAccess {
@@ -25,12 +19,9 @@ public class OsAccess {
         lineList.add(line);
       }
       line_by_line_data = lineList.toArray(new String[lineList.size()]);
-            List<String> list1 = new ArrayList<>();
               // // 文字列の分割（各行ごとに分割）
-              String regex = " ";
               int line_count = line_by_line_data.length;
               String[] access_path = new String[line_count];
-              // System.out.println(line_by_line_data.length);
 
               // 各行ごとに必要な項目を取り出してくる
               for (int i=0; i<line_count; i++){
@@ -41,7 +32,6 @@ public class OsAccess {
                 int endIndex = line_by_line_data[i].indexOf(endStr) + endStr.length();
                 access_path[i] = line_by_line_data[i].substring(beginIndex-1, endIndex);
                 }
-                // System.out.println(Arrays.toString(access_path));
               Integer[] access_count_list = new Integer[line_count];
               // 要素ごとに個数を出力
               for (int i = 0; i < line_count; i++){
@@ -97,8 +87,6 @@ public class OsAccess {
               System.out.println("MacOSの割合"+(double)Math.round(mac_rate* 10)/10+"%");
               double other_rate = (total_other / total_os) *100;
               System.out.println("Windows、MacOS以外の割合"+(double)Math.round(other_rate* 10)/10+"%");
-
-
               br.close();
     }
     catch(IOException e){
