@@ -38,7 +38,7 @@ public class Keyword {
               }
               // 各行ごとに必要な（大まかな）箇所を抽出
               for (int i=0; i<search_word_count; i++){
-                String beginStr = "/search/";
+                String beginStr = "=";
                 int beginIndex = line_by_line_data[i].indexOf(beginStr);
                 String endStr = "M";
                 int endIndex = line_by_line_data[i].indexOf(endStr) + endStr.length();
@@ -48,15 +48,20 @@ public class Keyword {
                 String[] search_word = new String[search_word_count];
                 for (int i=0; i<search_word_count; i++){
                   String[] split_search =  search_split[i].split(" ");
-                  search_word[i] = split_search[0] ;
+                  search_word[i] = split_search[0].replace("=", "");
                 }
                 // System.out.println(search_split[7]);
                 // System.out.println(search_word[7]);
                 // System.out.println(search_split[8]);
-                // System.out.println(search_word[8]);
                 // System.out.println(Arrays.toString(search_word));
                 // System.out.println(search_word.length);
-              
+                // 分割した文字列に"が入っていたため削除
+                for (int i=0; i<search_word.length; i++){
+                  if (search_word[i].contains("\"")){
+                    search_word[i] = search_word[i].substring(0,search_word[i].length()-1);
+                  }
+                }
+
 
               String[] search_word_total = new String[search_word_count];
                // 要素ごとに個数を出力
@@ -84,16 +89,16 @@ public class Keyword {
             }
             Object[] search_rank = linkedHashSet.toArray();
 
-              // 必要数表示する(上位20位)
-              // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              // System.out.println("回数:URL（パス）");
-              // for (int i = 0; i <=20-1; i++){
-              //   System.out.println(search_rank[i]);
-              // }
+              // 必要数表示する(上位10位)
+              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              System.out.println("回数:URL（パス）");
+              for (int i = 0; i <=10-1; i++){
+                System.out.println(search_rank[i]);
+              }
               // System.out.println(search_rank[680]);
               // System.out.println(search_rank[679]);
               // System.out.println(search_rank[678]);
-              System.out.println(Arrays.toString(search_rank));
+              // System.out.println(Arrays.toString(search_rank));
 
               br.close();
     }
