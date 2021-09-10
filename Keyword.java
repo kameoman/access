@@ -2,7 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
-
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.Comparator;
+import java.util.Collections;
 // 3.このサイト内で最も検索されているキーワード上位10件とそれらの検索回数
 
 public class Keyword {
@@ -39,31 +42,63 @@ public class Keyword {
                 int beginIndex = line_by_line_data[i].indexOf(beginStr);
                 String endStr = "M";
                 int endIndex = line_by_line_data[i].indexOf(endStr) + endStr.length();
-                search_split[i] = line_by_line_data[i].substring(beginIndex-1, endIndex);
+                search_split[i] = line_by_line_data[i].substring(beginIndex, endIndex);
               }
-              // 検索ワードをより的確に抽出
+              // // 検索ワードをより的確に抽出
                 String[] search_word = new String[search_word_count];
                 for (int i=0; i<search_word_count; i++){
                   String[] split_search =  search_split[i].split(" ");
                   search_word[i] = split_search[0] ;
                 }
-                System.out.println(search_word[0]);
-                System.out.println(search_word.length);
+                // System.out.println(search_split[7]);
+                // System.out.println(search_word[7]);
+                // System.out.println(search_split[8]);
+                // System.out.println(search_word[8]);
+                // System.out.println(Arrays.toString(search_word));
+                // System.out.println(search_word.length);
+              
 
               String[] search_word_total = new String[search_word_count];
                // 要素ごとに個数を出力
-               for (int i = 0; i < search_word.length; i++){
-                int count = 0;
-                String x = (search_word[i]);
-                for (var y: search_word){
-                    if (y.equals(x)){
-                        count++;
-                    }
-                }
-                search_word_total[i] = count + ":" + x ;
+              for (int i = 0; i < search_word.length; i++){
+              int count = 0;
+              String x = (search_word[i]);
+              for (var y: search_word){
+                  if (y.equals(x)){
+                      count++;
+                  }
               }
-              
-              System.out.println(search_word_total[0]);
+              search_word_total[i] = count + ":" + x ;
+            }
+            
+            
+            // 配列から重複を削除する
+            ArrayList<String> linkedHashSet = new ArrayList<>();
+            for (int i = 0; i < search_word_total.length; i++) {
+              linkedHashSet.add(search_word_total[i]);
+            }
+            // System.out.println(linkedHashSet);
+            Object[] search_rank = linkedHashSet.toArray();
+            // Collections.sort(linkedHashSet,Comparator.comparingLong(str -> -1 * Long.parseLong(str.split(":")[0])));
+              // 降順にソートします
+              // Arrays.sort(search_rank);
+              for (int f = 0, l = search_rank.length - 1; f < l; f++, l--){
+                Object temp = search_rank[f];
+                search_rank[f]  = search_rank[l];
+                search_rank[l] = temp;
+              }
+
+              // 必要数表示する(上位20位)
+              // System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
+              // System.out.println("回数:URL（パス）");
+              for (int i = 0; i <=20-1; i++){
+                System.out.println(search_rank[i]);
+              }
+              // System.out.println(search_rank[680]);
+              // System.out.println(search_rank[679]);
+              // System.out.println(search_rank[678]);
+              // System.out.println(Arrays.toString(search_rank));
+
               br.close();
     }
     catch(IOException e){

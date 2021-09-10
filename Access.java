@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.Comparator;
 
 public class Access {
     public static void main(String[] args){
@@ -46,24 +47,24 @@ public class Access {
                 }
                 access_count_list[i] = count +":"+ x;
               }
+              ArrayList<String> list_count = new ArrayList<>();
+              for (int i = 0; i < 20; i++) {
+                list_count.add(access_count_list[i]);
+              }
+              Collections.sort(list_count, Comparator.comparingLong(str -> -1 * Long.parseLong(str.split(":")[0])));
+              String[] array = list_count.toArray(new String[list_count.size()]);
+              
               // 配列から重複を削除する
               Set<String> linkedHashSet = new LinkedHashSet<String>();
-              for (int i = 0; i < access_count_list.length; i++) {
-                linkedHashSet.add(access_count_list[i]);
+              for (int i = 0; i < array.length; i++) {
+                linkedHashSet.add(array[i]);
               }
-              Object[] access_count_total = linkedHashSet.toArray();
-              // 降順にソートします
-              Arrays.sort(access_count_total);
-              for (int f = 0, l = access_count_total.length - 1; f < l; f++, l--){
-                Object temp = access_count_total[f];
-                access_count_total[f]  = access_count_total[l];
-                access_count_total[l] = temp;
-              }
+              Object[] strings_after = linkedHashSet.toArray();
               // 必要数表示する(上位20位)
               System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
               System.out.println("回数:URL（パス）");
-              for (int i = 0; i <=20-1; i++){
-                System.out.println(access_count_total[i]);
+              for (int i = 0; i < 20; i++) {
+                System.out.println(strings_after[i]);
               }
               br.close();
     }
