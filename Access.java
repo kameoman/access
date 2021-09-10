@@ -63,8 +63,17 @@ public class Access {
               // 必要数表示する(上位20位)
               System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
               System.out.println("回数:URL（パス）");
-              for (int i = 0; i < 20; i++) {
-                System.out.println(strings_after[i]);
+              if (strings_after.length < 20){
+                for (int i = 0; i < strings_after.length; i++) {
+                  System.out.println(strings_after[i]);
+                }
+                for (int i = 0; i < 20-strings_after.length; i++) {
+                  System.out.println("コンテンツがありません");
+                }
+              }else{
+                for (int i = 0; i < 20; i++) {
+                  System.out.println(strings_after[i]);
+                }
               }
               br.close();
     }
