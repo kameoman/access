@@ -59,16 +59,44 @@ public class Keyword {
                 for (int i=0; i<search_word.length; i++){
                   if (search_word[i].contains("\"")){
                     search_word[i] = search_word[i].substring(0,search_word[i].length()-1);
+                  }else{
+                    search_word[i] = search_word[i];
                   }
                 }
 
+                // リスト内の0,10,20などを削除する
+                List<String> list = new ArrayList<String>(Arrays.asList(search_word));
+                System.out.println(list.size());
+                // list.remove(0);
+                // int ddcount = 0;
+                for (int i=0; i<list.size(); i++){
+                  if (list.get(i).length()<4){
+                    list.remove(list.get(i));
+                    // System.out.println(list.get(i));
+                    // ddcount ++;
+                  }
+                }
+                // System.out.println(list.size());
+                // System.out.println(ddcount);
+                // System.out.println(list.get(1747).length());
+                    // list.remove(list.get(0));
+                // System.out.println(list.get(2));
+                String[] arr_2 = (String[]) list.toArray(new String[list.size()]);
+                // for (String str : arr_2) {
+                //   System.out.println(str);
+                // }
 
+                // search_word[2] = search_word[2].trim();
+                // System.out.println(Arrays.toString(search_word));
+                // System.out.println(search_word[2].length());
+                // System.out.println(search_word[0].length());
+                // System.out.println(search_word[2]);
               String[] search_word_total = new String[search_word_count];
                // 要素ごとに個数を出力
-              for (int i = 0; i < search_word.length; i++){
+              for (int i = 0; i < arr_2.length; i++){
               int count = 0;
-              String x = (search_word[i]);
-              for (var y: search_word){
+              String x = (arr_2[i]);
+              for (var y: arr_2){
                   if (y.equals(x)){
                       count++;
                   }
@@ -90,16 +118,12 @@ public class Keyword {
             Object[] search_rank = linkedHashSet.toArray();
 
               // 必要数表示する(上位10位)
-              System.out.println("最もアクセスの多かった上位20件のURL（パス）とそのアクセス回数");
-              System.out.println("回数:URL（パス）");
-              for (int i = 0; i <=10-1; i++){
+              // System.out.println("3.このサイト内で最も検索されているキーワード上位10件とそれらの検索回数");
+              // System.out.println("回数:URL（パス）");
+              for (int i = 0; i <=30-1; i++){
+                System.out.print(i+1+"位:");
                 System.out.println(search_rank[i]);
               }
-              // System.out.println(search_rank[680]);
-              // System.out.println(search_rank[679]);
-              // System.out.println(search_rank[678]);
-              // System.out.println(Arrays.toString(search_rank));
-
               br.close();
     }
     catch(IOException e){
